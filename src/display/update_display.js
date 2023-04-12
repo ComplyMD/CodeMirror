@@ -95,6 +95,10 @@ export function updateDisplayIfNeeded(cm, update) {
     return false
   }
 
+  if(!update.force && cm.activeTouch !== null) {
+    return false;
+  }
+
   // Bail out if the visible area is already rendered and nothing changed.
   if (!update.force &&
       update.visible.from >= display.viewFrom && update.visible.to <= display.viewTo &&
